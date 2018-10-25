@@ -13,15 +13,13 @@ public class TstComputador {
     notebook.setMarca( leitura.readMarca() );
     notebook.setRam( leitura.readRam() );
     
-    while( notebook.getPreco() <= 0 ) {
       try {
         notebook.setPreco( leitura.readPreco() );
-      } catch( UnderPriceException erro ) {
-        erro.printException();
-      } catch( OverPriceException erro ) {
-        erro.printException();
+      } catch( UnderPriceException upe ) {
+        upe.retry( notebook );
+      } catch( OverPriceException ope ) {
+        ope.retry( notebook );
       }
-    }
     
     notebook.setRegiao( 
       new Regiao( 
@@ -46,10 +44,10 @@ public class TstComputador {
     
     try {
       celular.setPreco( leitura.readPreco() );
-    } catch( UnderPriceException erro ) {
-      erro.printException();
-    } catch( OverPriceException erro ) {
-      erro.printException();
+    } catch( UnderPriceException upe ) {
+      upe.retry(celular);
+    } catch( OverPriceException ope ) {
+      ope.retry(celular);
     }
 
     celular.getRegiao().setNome( leitura.readNomeRegiao() );
