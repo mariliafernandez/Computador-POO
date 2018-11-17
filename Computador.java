@@ -5,20 +5,23 @@ public abstract class Computador { // abstract -> Não pode ser instanciada dire
   private String marca;
   private int preco; //R$
   private int ram; //GB
+  private String codigo;
   private Regiao regiao;
 
   public Computador() {
     marca = "";
     ram = 0;
     preco = 0;
+    codigo = "";
     regiao = new Regiao();
   }
 
   // Método Construtor sobrecarregado
-  public Computador(String marca, int ram, int preco, Regiao regiao) {
+  public Computador(String marca, int ram, int preco, String codigo, Regiao regiao) {
     this.marca = marca;
     this.ram = ram;
     this.preco = preco;
+    this.codigo = codigo;
     this.regiao = regiao;
   }
 
@@ -67,6 +70,14 @@ public abstract class Computador { // abstract -> Não pode ser instanciada dire
   public void setRam(int ram) {
       this.ram = ram;
   } 
+
+  public void setCodigo( String codigo ) {
+    this.codigo = codigo;
+  }
+
+  public String getCodigo() {
+    return codigo;
+  }
 
   public void setPreco(int preco) throws UnderPriceException, OverPriceException{
     if(preco <= 0) {
