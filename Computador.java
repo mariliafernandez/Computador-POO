@@ -7,6 +7,9 @@ public abstract class Computador { // abstract -> Não pode ser instanciada dire
   private int ram; //GB
   private String codigo;
   private Regiao regiao;
+  private Calcula calcula;
+  private Converte converte;
+ 
 
   public Computador() {
     marca = "";
@@ -63,6 +66,10 @@ public abstract class Computador { // abstract -> Não pode ser instanciada dire
     return preco;
   }
 
+  public String getCodigo() {
+    return codigo;
+  }
+
   public void setMarca(String marca) {
     this.marca = marca;
   }
@@ -71,15 +78,17 @@ public abstract class Computador { // abstract -> Não pode ser instanciada dire
       this.ram = ram;
   } 
 
-  public void setCodigo( String codigo ) {
-    this.codigo = codigo;
+  public void setCodigo( String codigo ) throws NullCodException {
+
+    if (codigo != null && !codigo.isEmpty()) {
+      this.codigo = codigo;
+    }
+    else {
+      throw new NullCodException();
+    }
   }
 
-  public String getCodigo() {
-    return codigo;
-  }
-
-  public void setPreco(int preco) throws UnderPriceException, OverPriceException{
+  public void setPreco(int preco) throws UnderPriceException, OverPriceException {
     if(preco <= 0) {
       throw new UnderPriceException();
     }

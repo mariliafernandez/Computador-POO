@@ -1,3 +1,4 @@
+
 // Marília Machado Fernandez
 
 public final class Notebook extends Computador implements Calcula, Converte { // Herança
@@ -39,6 +40,6 @@ public final class Notebook extends Computador implements Calcula, Converte { //
 
   // Método da interface Converte
   public double precoEmDolar() {
-    return cotacao * this.getPreco();
+    return this.getPreco() / cotacao;
   }
 }

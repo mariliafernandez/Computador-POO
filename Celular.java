@@ -1,6 +1,6 @@
 // Marília Machado Fernandez
 
-public final class Celular extends Computador { // Herança
+public final class Celular extends Computador  implements Calcula, Converte{ // Herança
   private String operadora;
 
   public Celular () {
@@ -26,5 +26,15 @@ public final class Celular extends Computador { // Herança
 
   public void setOperadora(String operadora) {
     this.operadora = operadora;
+  }
+
+  // Método da interface Calcula 
+  public double calculaImposto() {
+    return fator * this.getPreco();
+  }
+
+  // Método da interface Converte
+  public double precoEmDolar() {
+    return this.getPreco() / cotacao;
   }
 }
